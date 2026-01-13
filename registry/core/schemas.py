@@ -20,6 +20,10 @@ class ServerInfo(BaseModel):
     supported_transports: List[str] = Field(default_factory=lambda: ["streamable-http"], description="List of supported transports")
     mcp_endpoint: Optional[str] = Field(default=None, description="Custom /mcp endpoint path")
     sse_endpoint: Optional[str] = Field(default=None, description="Custom /sse endpoint path")
+    metadata: Dict[str, Any] = Field(
+        default_factory=dict,
+        description="Additional custom metadata for organization, compliance, or integration purposes",
+    )
 
 
 class ToolDescription(BaseModel):
@@ -71,6 +75,10 @@ class ServiceRegistrationRequest(BaseModel):
     supported_transports: str = Field(default="streamable-http", description="Comma-separated list of supported transports")
     mcp_endpoint: Optional[str] = Field(default=None, description="Custom /mcp endpoint path")
     sse_endpoint: Optional[str] = Field(default=None, description="Custom /sse endpoint path")
+    metadata: Dict[str, Any] = Field(
+        default_factory=dict,
+        description="Additional custom metadata for organization, compliance, or integration purposes",
+    )
 
 
 class OAuth2Provider(BaseModel):
